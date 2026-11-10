@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shazad Shahaludeen — student engineer exploring electronics, software and embedded systems.">
+  <meta name="theme-color" content="#101827">
+  <title>Shazad Shahaludeen | Student Engineer</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1220;
+      --panel: #111c2e;
+      --panel2: #152238;
+      --text: #edf3fb;
+      --muted: #a8b6ca;
+      --line: #26364e;
+      --accent: #77d6b0;
+      --accent2: #9bc7ff;
+      --max: 1040px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at top right, #162b3d 0, var(--bg) 46%);
+      color: var(--text);
+      font: 16px/1.65 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+    a { color: var(--accent2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    header { padding: 22px 0; border-bottom: 1px solid var(--line); }
+    nav { display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { color:var(--text); font-weight:750; letter-spacing:.2px; }
+    .navlinks { display:flex; flex-wrap:wrap; gap:18px; font-size:.92rem; }
+    .hero { padding: 92px 0 76px; }
+    .eyebrow { color:var(--accent); text-transform:uppercase; letter-spacing:.16em; font-size:.78rem; font-weight:700; }
+    h1 { font-size:clamp(2.5rem, 7vw, 5rem); line-height:1.04; letter-spacing:-.055em; margin:16px 0; }
+    .subtitle { color:var(--accent2); font-size:clamp(1.05rem, 2.5vw, 1.35rem); font-weight:600; }
+    .intro { color:var(--muted); max-width:720px; font-size:1.08rem; margin:20px 0 28px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .btn { display:inline-block; padding:11px 17px; border:1px solid var(--line); border-radius:10px; font-weight:650; }
+    .btn.primary { background:var(--accent); color:#092016; border-color:var(--accent); }
+    section { padding: 52px 0; border-top:1px solid var(--line); }
+    h2 { font-size:1.8rem; letter-spacing:-.025em; margin:0 0 22px; }
+    h3 { margin:0 0 8px; font-size:1.15rem; }
+    p { margin:8px 0; }
+    .muted { color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; }
+    .card { background:linear-gradient(145deg,var(--panel),var(--panel2)); border:1px solid var(--line); border-radius:15px; padding:22px; }
+    .tagrow { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+    .tag { color:#d8e8f8; border:1px solid #344b67; background:#17263a; padding:4px 10px; border-radius:99px; font-size:.83rem; }
+    ul { padding-left:20px; color:var(--muted); }
+    li { margin:6px 0; }
+    .status { display:inline-block; border:1px solid #3c705e; color:var(--accent); padding:3px 9px; border-radius:99px; font-size:.76rem; margin-bottom:12px; }
+    .timeline { display:grid; gap:16px; }
+    .footer { padding:30px 0 45px; color:var(--muted); font-size:.9rem; border-top:1px solid var(--line); }
+    @media (max-width:700px) {
+      .grid { grid-template-columns:1fr; }
+      .hero { padding:65px 0 55px; }
+      nav { align-items:flex-start; flex-direction:column; }
+      .navlinks { gap:12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="#top">Shazad Shahaludeen</a>
+        <div class="navlinks">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap">
+      <section class="hero" style="border-top:0">
+        <div class="eyebrow">Student Engineer</div>
+        <h1>Shazad<br>Shahaludeen</h1>
+        <div class="subtitle">Electronics · Software · Embedded Systems</div>
+        <p class="intro">
+          I enjoy tinkering with electronics, building experimental devices, and developing
+          software that brings hardware to life. I'm interested in practical engineering
+          projects that combine electronics, embedded programming, and software.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="https://github.com/Shazad-Shahaludeen">View GitHub</a>
+          <a class="btn" href="https://github.com/Shazad-Shahaludeen/SAGE-Soil-Agricultural-Guidance-Engine-">Explore SAGE</a>
+          <a class="btn" href="mailto:shazadshahaludeen@gmail.com">Email me</a>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>About</h2>
+        <p class="muted">
+          I'm a student engineer exploring electronics and embedded systems, with an interest
+          in hardware design, microcontrollers, system integration, robotics, automation, and
+          applied AI. I like learning by experimenting, prototyping, testing, and improving.
+        </p>
+      </section>
+
+      <section id="projects">
+        <h2>Featured projects</h2>
+        <div class="grid">
+          <article class="card">
+            <span class="status">Project repository</span>
+            <h3>SAGE — Soil Agricultural Guidance Engine</h3>
+            <p class="muted">
+              An open-source precision-agriculture project developing a portable soil-monitoring
+              system with ESP32-based sensing, Raspberry Pi integration, and a Python-powered
+              agricultural dashboard.
+            </p>
+            <div class="tagrow">
+              <span class="tag">ESP32</span><span class="tag">Raspberry Pi</span>
+              <span class="tag">Python</span><span class="tag">Agriculture</span>
+            </div>
+            <p style="margin-top:18px"><a href="https://github.com/Shazad-Shahaludeen/SAGE-Soil-Agricultural-Guidance-Engine-">View SAGE repository →</a></p>
+          </article>
+          <article class="card">
+            <span class="status">Exploration & prototyping</span>
+            <h3>Other engineering projects</h3>
+            <p class="muted">
+              Exploring robotics, electronics, automation, embedded software, and hardware-software
+              integration through hands-on experimentation and prototypes.
+            </p>
+            <div class="tagrow">
+              <span class="tag">Robotics</span><span class="tag">Electronics</span>
+              <span class="tag">Automation</span><span class="tag">Embedded software</span>
+            </div>
+            <p style="margin-top:18px"><a href="https://github.com/Shazad-Shahaludeen?tab=repositories">Browse my repositories →</a></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Technical interests</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Electronics & embedded systems</h3>
+            <ul>
+              <li>Microcontrollers and sensor integration</li>
+              <li>ESP32 and Arduino</li>
+              <li>Raspberry Pi and Linux</li>
+              <li>Hardware-software communication</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Software & development</h3>
+            <ul>
+              <li>Python and C/C++</li>
+              <li>Git and GitHub</li>
+              <li>Dashboards and device interfaces</li>
+              <li>Robotics, automation, and applied AI</li>
+            </ul>
+          </div>
+        </div>
+        <p class="muted" style="font-size:.9rem;margin-top:14px">
+          This section describes areas of work and interest; it is not a claim of expert-level proficiency.
+        </p>
+      </section>
+
+      <section id="achievements">
+        <h2>Achievements</h2>
+        <div class="card">
+          <ul>
+            <li><strong>YIP 8.0</strong> — Preliminary and District Winner; State-Level Participant</li>
+            <li><strong>Sahodaya Science Exhibition</strong> — 1st Place and 3rd Place</li>
+            <li><strong>CBSE Regionals</strong> — 2nd Round Selection</li>
+            <li><strong>Srishti Innovation</strong> — Top 42</li>
+            <li>Special Achievement Recognition for YIP at School Annual Day</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Experience & exposure</h2>
+        <div class="timeline">
+          <article class="card">
+            <h3>ISRO — ISTRAC & IDSN</h3>
+            <p class="muted">Educational visit and exposure to:</p>
+            <ul>
+              <li>NavIC navigation systems</li>
+              <li>Chandrayaan-3 mission operations</li>
+              <li>Deep-space communication infrastructure, including a 32-metre antenna</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>SEED97 Labs, TKMCE</h3>
+            <p class="muted">
+              AgroPen development with guidance and mentorship from Ajesh, a student mentor.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="approach">
+        <h2>Engineering approach</h2>
+        <p class="muted">
+          I enjoy understanding how things work, experimenting with ideas, and turning concepts
+          into functional prototypes. I focus on practical problem-solving, reliable
+          hardware-software integration, and continuous learning through building.
+        </p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p class="muted">For project discussions and collaboration:</p>
+        <p><a href="mailto:shazadshahaludeen@gmail.com">shazadshahaludeen@gmail.com</a></p>
+        <p><a href="https://github.com/Shazad-Shahaludeen">github.com/Shazad-Shahaludeen</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© <span id="year">2026</span> Shazad Shahaludeen · Built with HTML and CSS.</div>
+  </footer>
+</body>
+</html>
