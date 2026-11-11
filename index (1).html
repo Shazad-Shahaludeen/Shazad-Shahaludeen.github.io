@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shazad Shahaludeen — student engineer exploring electronics, embedded systems, software, robotics and photography.">
+  <meta name="author" content="Shazad Shahaludeen">
+  <meta name="theme-color" content="#0b0d10">
+  <title>Shazad Shahaludeen — Student Engineer & Photographer</title>
+  <style>
+    :root {
+      --bg: #080b14; --panel: rgba(19, 25, 42, .78); --panel2: #171f35; --line: rgba(166, 183, 225, .16);
+      --text: #f4f6ff; --muted: #a2acc4; --soft: #d0d7e9;
+      --accent: #a78bfa; --accent2: #67e8f9; --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; background: radial-gradient(ellipse at 80% 0%, rgba(103,232,249,.09), transparent 32%), radial-gradient(ellipse at 12% 18%, rgba(167,139,250,.12), transparent 30%), var(--bg); color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
+      background: rgba(8,11,20,.76); border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.05rem; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 22px; color: var(--muted); font-size: .88rem; }
+    .nav-links a:hover { color: var(--text); }
+    .menu-btn { display: none; border: 1px solid var(--line); color: var(--text); background: var(--panel); padding: 8px 12px; border-radius: 9px; }
+    .hero { padding: 108px 0 86px; position: relative; overflow: hidden; }
+    .hero:before {
+      content: ""; position: absolute; width: 540px; height: 540px; border-radius: 50%;
+      right: -150px; top: -220px; background: radial-gradient(circle, rgba(167,139,250,.20), transparent 68%); pointer-events: none;
+    }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .17em; font-size: .73rem; font-weight: 800; }
+    h1 { font-size: clamp(3rem, 8vw, 6.5rem); line-height: .99; letter-spacing: -.075em; margin: 18px 0 24px; max-width: 900px; }
+    h1 em { background: linear-gradient(100deg, #a78bfa, #67e8f9); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: normal; }
+    .hero-copy { color: var(--soft); max-width: 690px; font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 19px; border-radius: 999px; font-weight: 750; font-size: .9rem; border: 1px solid var(--line); }
+    .btn.primary { background: linear-gradient(110deg, #a78bfa, #67e8f9); color: #09101c; border-color: transparent; box-shadow: 0 8px 28px rgba(103,232,249,.12); }
+    .btn.secondary { background: rgba(255,255,255,.045); border-color: var(--line); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 56px; color: var(--muted); font-size: .85rem; }
+    .hero-meta strong { color: var(--text); display: block; font-size: 1.02rem; }
+    section { padding: 82px 0; border-top: 1px solid rgba(255,255,255,.07); }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 34px; }
+    h2 { font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -.055em; margin: 10px 0 0; }
+    .section-intro { max-width: 480px; color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 24px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 29px; backdrop-filter: blur(16px); box-shadow: 0 18px 55px rgba(0,0,0,.16); }
+    .panel p { color: var(--soft); margin: 0 0 14px; }
+    .panel p:last-child { margin-bottom: 0; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat { background: rgba(23,31,53,.72); border: 1px solid var(--line); border-radius: 18px; padding: 20px; }
+    .stat strong { display: block; color: var(--accent); font-size: 1.7rem; letter-spacing: -.05em; }
+    .stat span { color: var(--muted); font-size: .82rem; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 24px; display: flex; flex-direction: column; min-height: 260px; transition: transform .2s, border-color .2s; }
+    .project:hover { transform: translateY(-4px); border-color: rgba(167,139,250,.55); }
+    .project-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .project-number { color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .12em; }
+    .tag { color: var(--accent2); border: 1px solid rgba(103,232,249,.28); border-radius: 99px; padding: 4px 9px; font-size: .7rem; white-space: nowrap; }
+    h3 { margin: 20px 0 8px; font-size: 1.45rem; letter-spacing: -.04em; }
+    .project p { color: var(--muted); margin: 0; font-size: .94rem; }
+    .stack { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 22px; }
+    .stack span { color: #d0d7e9; background: #202943; border-radius: 6px; padding: 4px 8px; font-size: .72rem; }
+    .ach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .achievement { display: flex; gap: 16px; align-items: flex-start; padding: 19px; border: 1px solid var(--line); background: var(--panel); border-radius: 18px; }
+    .achievement .mark { color: var(--accent); font-weight: 900; font-size: 1.1rem; }
+    .achievement strong { display: block; }
+    .achievement span { color: var(--muted); font-size: .86rem; }
+    .timeline { border-left: 1px solid rgba(167,139,250,.48); margin-left: 8px; padding-left: 24px; display: grid; gap: 24px; }
+    .timeline-item { position: relative; }
+    .timeline-item:before { content: ""; position: absolute; width: 9px; height: 9px; background: var(--accent); border-radius: 50%; left: -29px; top: 8px; }
+    .timeline-item strong { display: block; font-size: 1.04rem; }
+    .timeline-item p { color: var(--muted); margin: 5px 0 0; }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill { background: rgba(23,31,53,.72); border: 1px solid var(--line); padding: 10px 14px; border-radius: 999px; color: var(--soft); font-size: .9rem; }
+    .photo-grid { display: grid; grid-template-columns: 1.15fr .85fr .85fr; gap: 14px; }
+    .photo-card { min-height: 220px; border-radius: 22px; border: 1px dashed rgba(166,183,225,.30); background: linear-gradient(145deg, rgba(103,232,249,.09), rgba(167,139,250,.08), #101729); padding: 20px; display: flex; flex-direction: column; justify-content: end; }
+    .photo-card:first-child { min-height: 300px; }
+    .photo-card strong { font-size: 1.05rem; }
+    .photo-card span { color: var(--muted); font-size: .82rem; }
+    .photo-note { color: var(--muted); font-size: .85rem; margin-top: 16px; }
+    .contact-box { display: flex; justify-content: space-between; align-items: center; gap: 24px; background: linear-gradient(115deg, rgba(167,139,250,.16), rgba(103,232,249,.08) 70%); border: 1px solid var(--line); border-radius: 26px; padding: 38px; backdrop-filter: blur(16px); }
+    .contact-box p { color: var(--muted); margin: 10px 0 0; }
+    footer { padding: 28px 0 40px; color: #7f8a96; font-size: .8rem; display: flex; justify-content: space-between; gap: 18px; }
+
+    .github-feature { display: flex; align-items: center; justify-content: space-between; gap: 30px; min-height: 250px; background: linear-gradient(115deg, rgba(167,139,250,.13), rgba(103,232,249,.07) 72%), var(--panel); }
+    .github-copy { max-width: 650px; }
+    .github-copy h3 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 13px 0 10px; }
+    .github-copy p { color: var(--muted); max-width: 620px; margin: 0 0 24px; }
+    .github-mark { width: 124px; height: 124px; flex: 0 0 124px; border-radius: 32px; display: grid; place-items: center; background: linear-gradient(145deg, rgba(167,139,250,.22), rgba(103,232,249,.14)); border: 1px solid rgba(166,183,225,.2); box-shadow: 0 18px 50px rgba(0,0,0,.18); }
+    .github-mark span { font-size: 2rem; font-weight: 900; letter-spacing: -.08em; background: linear-gradient(100deg, #c4b5fd, #67e8f9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .btn, .panel, .achievement, .photo-card { transition: transform .22s ease, border-color .22s ease, background .22s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    ::selection { background: rgba(167,139,250,.35); color: #fff; }
+
+    @media (max-width: 760px) {
+      .nav-inner { min-height: 64px; }
+      .menu-btn { display: inline-block; }
+      .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; padding: 18px 22px; background: #0d1220; border-bottom: 1px solid var(--line); flex-direction: column; gap: 13px; }
+      .nav-links.open { display: flex; }
+      .hero { padding: 78px 0 62px; }
+      section { padding: 62px 0; }
+      .section-head { display: block; }
+      .section-intro { margin-top: 15px; }
+      .about-grid, .project-grid, .ach-grid { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .photo-card:first-child { grid-column: span 2; }
+      .contact-box { display: block; }
+      .github-feature { align-items: flex-start; }
+      .github-mark { width: 82px; height: 82px; flex-basis: 82px; border-radius: 24px; }
+      .contact-box .btn { margin-top: 22px; }
+    }
+    @media (max-width: 430px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      .photo-grid { grid-template-columns: 1fr; }
+      .github-feature { display: block; }
+      .github-mark { margin-top: 28px; }
+      .photo-card:first-child { grid-column: auto; }
+      .hero-meta { gap: 17px; }
+      footer { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#home">SHAZAD<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#projects">GitHub</a><a href="#achievements">Achievements</a>
+        <a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#photography">Photography</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home" style="border-top:0">
+      <div class="wrap">
+        <div class="eyebrow">Student engineer · Electronics · Software · Embedded systems</div>
+        <h1>Curious by nature.<br><em>Builder by choice.</em></h1>
+        <p class="hero-copy">I'm Shazad Shahaludeen, a student exploring the space where electronics, software and real-world problem solving meet. I enjoy turning ideas into practical prototypes, learning from what doesn't work, and improving each version.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">Explore my GitHub ↗</a>
+          <a class="btn secondary" href="https://github.com/Shazad-Shahaludeen" target="_blank" rel="noopener">GitHub profile ↗</a>
+        </div>
+        <div class="hero-meta">
+          <div><strong>Electronics + code</strong><span>Building across hardware and software</span></div>
+          <div><strong>Prototype-driven</strong><span>Test, learn, refine</span></div>
+          <div><strong>Also a photographer</strong><span>Finding stories in small details</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head"><div><div class="eyebrow">01 / About</div><h2>A little about<br>how I work.</h2></div><p class="section-intro">I’m interested in engineering that is useful, understandable and grounded in what the hardware can actually do.</p></div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>I’m a student based in Kollam, Kerala, India, with interests spanning computer science, electronics, embedded systems, robotics and software development.</p>
+            <p>I like working across the full build process: understanding a problem, choosing practical components, connecting hardware and software, testing behaviour, and documenting what needs improvement.</p>
+            <p>My approach is iterative. I value working prototypes, honest progress reporting and solutions that respect real constraints such as cost, reliability and available hardware.</p>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><strong>01</strong><span>Build with purpose</span></div>
+            <div class="stat"><strong>02</strong><span>Test in the real world</span></div>
+            <div class="stat"><strong>03</strong><span>Document the process</span></div>
+            <div class="stat"><strong>04</strong><span>Keep improving</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">02 / Selected work</div><h2>Things I build.</h2></div>
+          <p class="section-intro">I work across software, electronics and engineering prototypes. Explore my GitHub to see the projects, source code and development work in one place.</p>
+        </div>
+        <div class="panel github-feature">
+          <div class="github-copy">
+            <div class="eyebrow">Code · Experiments · Projects</div>
+            <h3>Explore my work on GitHub.</h3>
+            <p>For the latest project details, repositories and code, visit my GitHub profile. I’ll keep the portfolio focused on who I am and what I’m interested in, while GitHub holds the evolving project work.</p>
+            <a class="btn primary" href="https://github.com/Shazad-Shahaludeen" target="_blank" rel="noopener">View my GitHub projects ↗</a>
+          </div>
+          <div class="github-mark" aria-hidden="true">
+            <span>GH</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="wrap">
+        <div class="section-head"><div><div class="eyebrow">03 / Recognition</div><h2>Achievements.</h2></div><p class="section-intro">Recognition earned through student innovation, science exhibitions and project development.</p></div>
+        <div class="ach-grid">
+          <div class="achievement"><div class="mark">01</div><div><strong>YIP 8.0 — K-DISC</strong><span>Preliminary and District Winner; State-Level Participant.</span></div></div>
+          <div class="achievement"><div class="mark">02</div><div><strong>Sahodaya Science Exhibition</strong><span>1st Place and 3rd Place recognition.</span></div></div>
+          <div class="achievement"><div class="mark">03</div><div><strong>SRISHTHI Innovation</strong><span>Selected among the Top 42.</span></div></div>
+          <div class="achievement"><div class="mark">04</div><div><strong>Trinity Science Fest 2025</strong><span>1st Place — Still Model category.</span></div></div>
+          <div class="achievement"><div class="mark">05</div><div><strong>CBSE Regionals</strong><span>Advanced to the second round of selection.</span></div></div>
+          <div class="achievement"><div class="mark">06</div><div><strong>School Annual Day</strong><span>Special achievement recognition for YIP participation.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head"><div><div class="eyebrow">04 / Exposure</div><h2>Learning beyond<br>the classroom.</h2></div><p class="section-intro">Experiences that broadened my understanding of engineering, technology and teamwork.</p></div>
+        <div class="panel">
+          <div class="timeline">
+            <div class="timeline-item"><strong>ISRO educational visit — ISTRAC & IDSN</strong><p>Exposure to India's space communication and navigation infrastructure, including NavIC, Chandrayaan-3 mission-control operations and a 32-metre deep-space antenna.</p></div>
+            <div class="timeline-item"><strong>SEED97 Labs, TKMCE</strong><p>Worked on AgroPen development with guidance and mentorship, gaining exposure to collaborative prototyping and engineering workflows.</p></div>
+            <div class="timeline-item"><strong>Team-based innovation projects</strong><p>Collaborating across software, electronics, design and prototype development, with a focus on clear responsibilities and practical integration.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head"><div><div class="eyebrow">05 / Toolkit</div><h2>Areas I work in.</h2></div><p class="section-intro">A developing toolkit built through projects, experimentation and self-directed learning.</p></div>
+        <div class="panel">
+          <div class="skills">
+            <span class="skill">Python</span><span class="skill">Flutter</span><span class="skill">Embedded C / C++</span>
+            <span class="skill">Raspberry Pi</span><span class="skill">ESP32</span><span class="skill">Arduino</span>
+            <span class="skill">Sensors & Actuators</span><span class="skill">Electronics Prototyping</span>
+            <span class="skill">Flask</span><span class="skill">Linux</span><span class="skill">Git & GitHub</span>
+            <span class="skill">Mobile Development</span><span class="skill">Hardware–Software Integration</span>
+          </div>
+          <p class="photo-note">This list represents areas of experience and active learning, not a claim of expert-level proficiency in every tool.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="photography">
+      <div class="wrap">
+        <div class="section-head"><div><div class="eyebrow">06 / Behind the lens</div><h2>Photography.</h2></div><p class="section-intro">A creative practice built around observation, composition, light and the small details that are easy to miss.</p></div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>I’m developing my photography through experimentation with phone cameras, computational photography and mobile editing. I have worked with a Samsung Galaxy A70 and GCam, and use Lightroom Mobile to shape images toward my own style.</p>
+            <p>I’m especially interested in close-up details, nature, textures, light and composition. I’m also exploring dedicated cameras and interchangeable-lens systems, balancing image quality, handling, viewfinders, video and affordable lenses.</p>
+            <p>My aim is to keep developing a recognisable style while learning to make more deliberate decisions in-camera and during editing.</p>
+          </div>
+          <div class="panel">
+            <div class="eyebrow">Current creative toolkit</div>
+            <h3 style="margin-top:12px">Capture · Edit · Refine</h3>
+            <p><strong>Capture:</strong> Samsung Galaxy A70, GCam and continued exploration of dedicated cameras.</p>
+            <p><strong>Editing:</strong> Lightroom Mobile, using a high-contrast, detail-focused starting point with personal adjustments.</p>
+            <p><strong>Interests:</strong> Nature, macro-style close-ups, textures, water droplets and creative composition.</p>
+          </div>
+        </div>
+        <div class="photo-grid" style="margin-top:16px">
+          <div class="photo-card"><strong>Your photograph goes here</strong><span>Featured image · Replace this panel with an original photograph</span></div>
+          <div class="photo-card"><strong>Close-up study</strong><span>Texture, detail or macro-style work</span></div>
+          <div class="photo-card"><strong>Light & colour</strong><span>Landscape, nature or experimental frame</span></div>
+        </div>
+        <p class="photo-note">These are gallery placeholders, not sample photographs. Add your own original images when ready.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div><div class="eyebrow">07 / Contact</div><h2>Let’s connect.</h2><p>Interested in projects, technology, collaboration or sharing ideas? Find me on GitHub or send a professional email.</p></div>
+          <div class="hero-actions" style="margin:0">
+            <a class="btn primary" href="mailto:shazadshahaludeen@gmail.com">Email me ↗</a>
+            <a class="btn secondary" href="https://github.com/Shazad-Shahaludeen" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap"><span>© <span id="year"></span> Shazad Shahaludeen</span><span>Built around curiosity, practical engineering and creative work.</span></footer>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
