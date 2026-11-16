@@ -42,6 +42,10 @@
     h1 { font-size: clamp(3rem, 8vw, 6.5rem); line-height: .99; letter-spacing: -.075em; margin: 18px 0 24px; max-width: 900px; }
     h1 em { background: linear-gradient(100deg, #a78bfa, #67e8f9); -webkit-background-clip: text; background-clip: text; color: transparent; font-style: normal; }
     .hero-copy { color: var(--soft); max-width: 690px; font-size: clamp(1.05rem, 2vw, 1.25rem); }
+    .hero-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(250px, .65fr); align-items: center; gap: clamp(30px, 6vw, 76px); }
+    .hero-portrait { justify-self: end; width: min(100%, 340px); aspect-ratio: 4 / 4.7; padding: 7px; border-radius: 34px; background: linear-gradient(145deg, rgba(167,139,250,.9), rgba(103,232,249,.75)); box-shadow: 0 24px 75px rgba(0,0,0,.38); transform: rotate(1.5deg); }
+    .hero-portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; border-radius: 28px; }
+
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
     .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 19px; border-radius: 999px; font-weight: 750; font-size: .9rem; border: 1px solid var(--line); }
     .btn.primary { background: linear-gradient(110deg, #a78bfa, #67e8f9); color: #09101c; border-color: transparent; box-shadow: 0 8px 28px rgba(103,232,249,.12); }
@@ -82,11 +86,12 @@
     .timeline-item p { color: var(--muted); margin: 5px 0 0; }
     .skills { display: flex; flex-wrap: wrap; gap: 10px; }
     .skill { background: rgba(23,31,53,.72); border: 1px solid var(--line); padding: 10px 14px; border-radius: 999px; color: var(--soft); font-size: .9rem; }
-    .photo-grid { display: grid; grid-template-columns: 1.15fr .85fr .85fr; gap: 14px; }
-    .photo-card { min-height: 220px; border-radius: 22px; border: 1px dashed rgba(166,183,225,.30); background: linear-gradient(145deg, rgba(103,232,249,.09), rgba(167,139,250,.08), #101729); padding: 20px; display: flex; flex-direction: column; justify-content: end; }
-    .photo-card:first-child { min-height: 300px; }
-    .photo-card strong { font-size: 1.05rem; }
-    .photo-card span { color: var(--muted); font-size: .82rem; }
+    .photo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .photo-card { overflow: hidden; margin: 0; border-radius: 20px; border: 1px solid rgba(166,183,225,.18); background: rgba(16,23,41,.82); }
+    .photo-card a { display: block; overflow: hidden; aspect-ratio: 4 / 5; background: #101729; }
+    .photo-card img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+    .photo-card:hover img { transform: scale(1.045); }
+    .photo-card figcaption { padding: 13px 15px 15px; color: var(--soft); font-size: .9rem; }
     .photo-note { color: var(--muted); font-size: .85rem; margin-top: 16px; }
     .contact-box { display: flex; justify-content: space-between; align-items: center; gap: 24px; background: linear-gradient(115deg, rgba(167,139,250,.16), rgba(103,232,249,.08) 70%); border: 1px solid var(--line); border-radius: 26px; padding: 38px; backdrop-filter: blur(16px); }
     .contact-box p { color: var(--muted); margin: 10px 0 0; }
@@ -108,6 +113,9 @@
       .nav-links { display: none; position: absolute; top: 64px; left: 0; right: 0; padding: 18px 22px; background: #0d1220; border-bottom: 1px solid var(--line); flex-direction: column; gap: 13px; }
       .nav-links.open { display: flex; }
       .hero { padding: 78px 0 62px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 34px; }
+      .hero-portrait { justify-self: start; width: min(72%, 300px); margin-left: 4px; }
+
       section { padding: 62px 0; }
       .section-head { display: block; }
       .section-intro { margin-top: 15px; }
@@ -126,7 +134,13 @@
       .github-mark { margin-top: 28px; }
       .photo-card:first-child { grid-column: auto; }
       .hero-meta { gap: 17px; }
+      .hero-portrait { width: min(78%, 270px); }
+
       footer { display: block; }
+    }
+      @media (prefers-reduced-motion: reduce) {
+      .photo-card img { transition: none; }
+      .photo-card:hover img { transform: none; }
     }
   </style>
 </head>
@@ -144,18 +158,23 @@
 
   <main>
     <section class="hero" id="home" style="border-top:0">
-      <div class="wrap">
-        <div class="eyebrow">Student engineer · Electronics · Software · Embedded systems</div>
-        <h1>Curious by nature.<br><em>Builder by choice.</em></h1>
-        <p class="hero-copy">I'm Shazad Shahaludeen, a student exploring the space where electronics, software and real-world problem solving meet. I enjoy turning ideas into practical prototypes, learning from what doesn't work, and improving each version.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#projects">Explore my GitHub ↗</a>
-          <a class="btn secondary" href="https://github.com/Shazad-Shahaludeen" target="_blank" rel="noopener">GitHub profile ↗</a>
+      <div class="wrap hero-layout">
+        <div class="hero-intro">
+          <div class="eyebrow">Student engineer · Electronics · Software · Embedded systems</div>
+          <h1>Curious by nature.<br><em>Builder by choice.</em></h1>
+          <p class="hero-copy">I'm Shazad Shahaludeen, a student exploring the space where electronics, software and real-world problem solving meet. I enjoy turning ideas into practical prototypes, learning from what doesn't work, and improving each version.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">Explore my GitHub ↗</a>
+            <a class="btn secondary" href="https://github.com/Shazad-Shahaludeen" target="_blank" rel="noopener">GitHub profile ↗</a>
+          </div>
+          <div class="hero-meta">
+            <div><strong>Electronics + code</strong><span>Building across hardware and software</span></div>
+            <div><strong>Prototype-driven</strong><span>Test, learn, refine</span></div>
+            <div><strong>Also a photographer</strong><span>Finding stories in small details</span></div>
+          </div>
         </div>
-        <div class="hero-meta">
-          <div><strong>Electronics + code</strong><span>Building across hardware and software</span></div>
-          <div><strong>Prototype-driven</strong><span>Test, learn, refine</span></div>
-          <div><strong>Also a photographer</strong><span>Finding stories in small details</span></div>
+        <div class="hero-portrait">
+          <img src="assets/profile.webp" alt="Portrait of Shazad Shahaludeen wearing glasses and a black T-shirt">
         </div>
       </div>
     </section>
@@ -259,12 +278,69 @@
             <p><strong>Interests:</strong> Nature, macro-style close-ups, textures, water droplets and creative composition.</p>
           </div>
         </div>
-        <div class="photo-grid" style="margin-top:16px">
-          <div class="photo-card"><strong>Your photograph goes here</strong><span>Featured image · Replace this panel with an original photograph</span></div>
-          <div class="photo-card"><strong>Close-up study</strong><span>Texture, detail or macro-style work</span></div>
-          <div class="photo-card"><strong>Light & colour</strong><span>Landscape, nature or experimental frame</span></div>
+        <div class="photo-grid" aria-label="Photography gallery">
+          <figure class="photo-card">
+            <a href="assets/photography/gate-greenery.webp" target="_blank" rel="noopener" aria-label="Open full-size photograph: Greenery in the afternoon">
+              <img src="assets/photography/gate-greenery.webp" alt="A sunlit garden tree beside a dark gate" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Greenery in the afternoon</figcaption>
+          </figure>
+          <figure class="photo-card">
+            <a href="assets/photography/through-the-leaves.webp" target="_blank" rel="noopener" aria-label="Open full-size photograph: Through the leaves">
+              <img src="assets/photography/through-the-leaves.webp" alt="A close view through narrow green leaves and red stems" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Through the leaves</figcaption>
+          </figure>
+          <figure class="photo-card">
+            <a href="assets/photography/bougainvillea.webp" target="_blank" rel="noopener" aria-label="Open full-size photograph: Bougainvillea in bloom">
+              <img src="assets/photography/bougainvillea.webp" alt="Bright pink and orange bougainvillea flowers against green foliage" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Bougainvillea in bloom</figcaption>
+          </figure>
+          <figure class="photo-card">
+            <a href="assets/photography/starlight.webp" target="_blank" rel="noopener" aria-label="Open full-size photograph: A little starlight">
+              <img src="assets/photography/starlight.webp" alt="Star-shaped decorative lights glowing in the dark" loading="lazy" decoding="async">
+            </a>
+            <figcaption>A little starlight</figcaption>
+          </figure>
+          <figure class="photo-card">
+            <a href="assets/photography/white-blossoms-soft-focus.webp" target="_blank" rel="noopener" aria-label="Open full-size photograph: Soft focus">
+              <img src="assets/photography/white-blossoms-soft-focus.webp" alt="White blossoms and delicate branches with a blurred garden behind" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Soft focus</figcaption>
+          </figure>
+          <figure class="photo-card">
+            <a href="assets/photography/sunlit-branches.webp" target="_blank" rel="noopener" aria-label="Open full-size photograph: Sunlit branches">
+              <img src="assets/photography/sunlit-branches.webp" alt="Bright white leaves and reddish branches in strong sunlight" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Sunlit branches</figcaption>
+          </figure>
+          <figure class="photo-card">
+            <a href="assets/photography/le-delice-sign.webp" target="_blank" rel="noopener" aria-label="Open full-size photograph: Light against the dark">
+              <img src="assets/photography/le-delice-sign.webp" alt="A warm illuminated restaurant sign against a dark background" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Light against the dark</figcaption>
+          </figure>
+          <figure class="photo-card">
+            <a href="assets/photography/bamboo-textures.webp" target="_blank" rel="noopener" aria-label="Open full-size photograph: Bamboo textures">
+              <img src="assets/photography/bamboo-textures.webp" alt="A close-up of bamboo stems beside a walkway" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Bamboo textures</figcaption>
+          </figure>
+          <figure class="photo-card">
+            <a href="assets/photography/framed-by-trees.webp" target="_blank" rel="noopener" aria-label="Open full-size photograph: Framed by trees">
+              <img src="assets/photography/framed-by-trees.webp" alt="A building viewed through a canopy of trees" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Framed by trees</figcaption>
+          </figure>
+          <figure class="photo-card">
+            <a href="assets/photography/shoreline.webp" target="_blank" rel="noopener" aria-label="Open full-size photograph: Along the shoreline">
+              <img src="assets/photography/shoreline.webp" alt="A rocky coastal shoreline meeting the sea under a bright blue sky" loading="lazy" decoding="async">
+            </a>
+            <figcaption>Along the shoreline</figcaption>
+          </figure>
         </div>
-        <p class="photo-note">These are gallery placeholders, not sample photographs. Add your own original images when ready.</p>
+        <p class="photo-note">A selection of photographs exploring colour, natural details, light and everyday scenes. Select any image to view it at full size.</p>
       </div>
     </section>
 
